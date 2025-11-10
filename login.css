@@ -1,0 +1,169 @@
+/* === LOGIN PAGE DARK THEME === */
+body.dark-theme {
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top left, #0d0d0d, #1a1a1a 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+/* 🔸 Floating animated glow (fixed z-index issue) */
+body.dark-theme::before,
+body.dark-theme::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 60, 0, 0.25), transparent 70%);
+  animation: float 10s infinite alternate ease-in-out;
+  border-radius: 50%;
+  z-index: -1; /* ✅ Fix: keeps glow behind all content */
+}
+body.dark-theme::after {
+  background: radial-gradient(circle, rgba(255, 200, 0, 0.15), transparent 70%);
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, -50px) scale(1.1); }
+}
+
+/* === Login container === */
+.login-container {
+  position: relative;
+  width: 260px;
+  padding: 25px 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
+  backdrop-filter: blur(8px);
+  animation: slideIn 0.8s ease-out;
+  overflow: hidden;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 🔹 Orange triangle banner */
+.triangle-banner {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  background: linear-gradient(90deg, #ff3c00, #ff9900);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  display: flex;
+  align-items: flex-end;
+  padding-left: 10px;
+  box-shadow: 0 0 12px rgba(255, 100, 0, 0.8);
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(255, 100, 0, 0.5); }
+  to { box-shadow: 0 0 25px rgba(255, 150, 0, 0.9); }
+}
+
+.triangle-banner h2 {
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  color: white;
+  font-weight: 500;
+}
+
+.triangle-banner span {
+  color: #ffce00;
+}
+
+/* === Title === */
+.login-title {
+  margin-top: 30px;
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: #ffce00;
+  text-shadow: 0 0 10px #ff3c00;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 8px #ff3c00; }
+  50% { text-shadow: 0 0 18px #ffce00; }
+}
+
+/* === Inputs === */
+.login-box input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1.5px solid #ff3c00;
+  background: transparent;
+  color: white;
+  outline: none;
+  font-size: 0.8em;
+  transition: 0.3s;
+}
+
+.login-box input::placeholder {
+  color: #bbb;
+}
+
+.login-box input:focus {
+  border-bottom-color: #ffce00;
+  transform: scale(1.05);
+}
+
+/* === Button === */
+.btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff3c00, #ffb300);
+  border: none;
+  padding: 6px;
+  border-radius: 25px;
+  color: black;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: 0.4s;
+  box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+}
+
+.btn:hover {
+  transform: scale(1.07);
+  background: linear-gradient(90deg, #ffce00, #ff3c00);
+  box-shadow: 0 0 20px rgba(255, 180, 0, 0.8);
+}
+
+/* === Bottom Text === */
+.bottom-text {
+  margin-top: 6px;
+  font-size: 0.75em;
+  color: #eee;
+}
+
+.bottom-text a {
+  color: #ffce00;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.bottom-text a:hover {
+  text-decoration: underline;
+  color: #ffb300;
+}
+
+/* === Error Message === */
+.error {
+  color: #ff8888;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+}
